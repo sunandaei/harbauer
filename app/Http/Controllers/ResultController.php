@@ -13,7 +13,7 @@ class ResultController extends Controller
             ->orderBy('pan_name', 'DESC')
             ->get();  
 
-         dd($data);      
+         //dd($data);      
 
         return view('result.index', compact('data'));
     }
