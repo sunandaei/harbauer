@@ -11,7 +11,9 @@ class ResultController extends Controller
        $data = Result::orderBy('dist_name', 'DESC')
             ->orderBy('block_name', 'DESC')
             ->orderBy('pan_name', 'DESC')
-            ->get();          
+            ->get();  
+
+         //dd($data);      
 
         return view('result.index', compact('data'));
     }

@@ -68,21 +68,7 @@
                      </tr>
                     @endforeach
                   </tbody>
-                  <tfoot>
-                  <tr>
-                    <th>Dist Name</th>
-                      <th>Block Name</th>
-                      <th>Pan Name</th>
-                      <th>Ward</th>
-                      <th>Scheme Name</th>
-                      <th>Scheme Id</th>
-                      <th>Scheme Type</th>
-                      <th>Device Id</th>
-                      <th>Status</th>
-                      <th>Avg Motor Running Hrs</th>
-                      <th>Elec. Avi Staus</th>
-                  </tr>
-                  </tfoot>
+                  
                 </table>
              </div>
           </div>
