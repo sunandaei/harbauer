@@ -35,12 +35,12 @@ return [
 
         'mongodb' => [
             'driver'   => 'mongodb',
-            'host'     => env('MONGO_DB_HOST', '10.176.41.150'),
+            'host'     => env('MONGO_DB_HOST', 'localhost'),
             'port'     => env('MONGO_DB_PORT', 27017),
-            'database' => env('MONGO_DB_DATABASE', 'thetaDelta'),
-            'username' => env('MONGO_DB_USERNAME', 'phedroutineon'),
-            'password' => env('MONGO_DB_PASSWORD','S@9nDA5v4gh5#'),
-            'options'  => ['database' => 'thetaDelta']
+            'database' => env('MONGO_DB_DATABASE', 'mongo-demo'),
+            'username' => env('MONGO_DB_USERNAME'),
+            'password' => env('MONGO_DB_PASSWORD'),
+            'options'  => []
         ],
     
         'sqlite' => [
