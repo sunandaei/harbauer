@@ -20,7 +20,47 @@
 @endsection
 @section('content')
 <div class="row">
-    <div class="col-12">
+   <div class="col-12">
+   <!-- Filter Form -->
+    <div class="card">
+        <div class="card-header">
+          <h3 class="card-title">Filter Results</h3>
+        </div>
+        <div class="card-body">
+          <form method="GET" action="{{ url('/result') }}">
+            <div class="row">
+               <div class="col-md-2">
+                <input type="text" name="district" class="form-control" placeholder="District" value="{{ request('district') }}">
+               </div>
+                <div class="col-md-2">
+                   <input type="text" name="block" class="form-control" placeholder="Block" value="{{ request('block') }}">
+                </div>
+                <div class="col-md-2">
+                    <input type="text" name="panchayat" class="form-control" placeholder="Panchayat" value="{{ request('panchayat') }}">
+                </div>
+                <div class="col-md-2">
+                    <input type="text" name="scheme_name" class="form-control" placeholder="Scheme Name" value="{{ request('scheme_name') }}">
+                </div>
+                <div class="col-md-2">
+                    <input type="text" name="scheme_type" class="form-control" placeholder="Scheme Type" value="{{ request('scheme_type') }}">
+                </div>
+                <div class="col-md-2">
+                    <input type="text" name="status" class="form-control" placeholder="Status" value="{{ request('status') }}">
+                </div>
+            </div>
+            <div class="row mt-2">
+                <div class="col-md-12 text-right">
+                    <button type="submit" class="btn btn-primary">Find</button>
+                </div>
+            </div>
+        </form>
+    </div>
+</div>
+<!-- /.card -->
+
+
+
+
     <!-- /.card -->
             <div class="card">
               <div class="card-header">
