@@ -29,23 +29,49 @@
         <div class="card-body">
           <form method="GET" action="{{ url('/result') }}">
             <div class="row">
-               <div class="col-md-2">
-                <input type="text" name="district" class="form-control" placeholder="District" value="{{ request('district') }}">
+                <div class="col-md-2">
+                <select id="district" name="district" class="form-control">
+                    <option value="">Select District</option>
+                    @foreach($districts as $district)
+                       <option value="{{ $district->dist_code }}" {{ $request->district == $district->dist_code ? 'selected' : '' }}>{{ $district->dist_name }}</option>
+                 
+                    @endforeach
+                </select>
                </div>
                 <div class="col-md-2">
-                   <input type="text" name="block" class="form-control" placeholder="Block" value="{{ request('block') }}">
+                   <select id="block" name="block" class="form-control">
+                       <option value="">Select Block</option>
+                   </select>
                 </div>
                 <div class="col-md-2">
-                    <input type="text" name="panchayat" class="form-control" placeholder="Panchayat" value="{{ request('panchayat') }}">
+                    <select id="panchayat" name="panchayat" class="form-control">
+                        <option value="">Select Panchayat</option>
+                    </select>
                 </div>
                 <div class="col-md-2">
-                    <input type="text" name="scheme_name" class="form-control" placeholder="Scheme Name" value="{{ request('scheme_name') }}">
+                <select id="scheme" name="scheme" class="form-control">
+                    <option value="">Select scheme</option>
+                    @foreach($scheme as $scheme)
+                         <option value="{{ $scheme->scheme_id }}" {{ $request->scheme == $scheme->scheme_id ? 'selected' : '' }}>{{ $scheme->scheme_name }}</option>
+                    
+                    @endforeach
+                </select>
+               </div>
+                <div class="col-md-2">
+                    <select id="scheme_type" name="scheme_type" class="form-control">
+                        <option value="">Select scheme type</option>
+                        <option value="PWS" {{ $request->scheme_type == 'PWS' ? 'selected' : '' }}>PWS</option>
+                        <option value="WLS" {{ $request->scheme_type == 'WLS' ? 'selected' : '' }}>WLS</option>
+                    
+                    </select>
                 </div>
                 <div class="col-md-2">
-                    <input type="text" name="scheme_type" class="form-control" placeholder="Scheme Type" value="{{ request('scheme_type') }}">
-                </div>
-                <div class="col-md-2">
-                    <input type="text" name="status" class="form-control" placeholder="Status" value="{{ request('status') }}">
+                    <select id="status" name="status" class="form-control">
+                        <option value="">Select status</option>
+                        <option value="FUNCTIONAL" {{ $request->status == 'FUNCTIONAL' ? 'selected' : '' }}>FUNCTIONAL</option>
+                        <option value="OFFLINE" {{ $request->status == 'OFFLINE' ? 'selected' : '' }}>OFFLINE</option>
+                    
+                    </select>
                 </div>
             </div>
             <div class="row mt-2">
@@ -127,7 +153,75 @@
 @endsection
 
 @push('scripts')
+<script>
+$(document).ready(function() {
+// Store the previous selections
+var previousDistrict = "{{ isset($request) ? $request->district : '' }}";
+var previousBlock = "{{ isset($request) ? $request->block : '' }}";
 
+var previousPanchayat = "{{ isset($request) ? $request->panchayat : '' }}";
+
+
+// Function to populate the blocks dropdown based on the selected district
+function populateBlocks(district_id) {
+$('#block').empty().append('<option value="">Select Blocks</option>');
+    if (district_id) {
+        $.ajax({
+            url: '{{ url("/get-blocks") }}',
+            type: 'GET',
+                data: { dist_code: district_id },
+                success: function(data) {
+                    $.each(data, function(key, value) {
+                        $('#block').append('<option value="'+ value.block_code +'">'+ value.block_name +'</option>');
+                    });
+
+                    // Set the previously selected block
+                    $('#block').val(previousBlock);
+
+                    // Populate the panchayats based on the selected block
+                    populatePanchayats(previousBlock);
+                }
+            });
+        }
+    }
+
+    // Function to populate the panchayats dropdown based on the selected block
+    function populatePanchayats(block_id) {
+        $('#panchayat').empty().append('<option value="">Select Panchayat</option>');
+        if (block_id) {
+            $.ajax({
+                url: '{{ url("/get-panchayats") }}',
+                type: 'GET',
+                data: { block_code: block_id },
+                success: function(data) {
+                    $.each(data, function(key, value) {
+                        $('#panchayat').append('<option value="'+ value.pan_code +'">'+ value.pan_name +'</option>');
+                    });
+
+                    // Set the previously selected panchayat
+                    $('#panchayat').val(previousPanchayat);
+                }
+            });
+        }
+    }
+// Initialize the dropdowns with previous selections
+$('#district').val(previousDistrict);
+// Populate blocks and panchayats based on previous selections
+populateBlocks(previousDistrict);
+
+$('#district').change(function() {
+        var district_id = $(this).val();
+        populateBlocks(district_id);
+    });
+
+$('#block').change(function() {
+        var block_id = $(this).val();
+        populatePanchayats(block_id);
+    });
+
+    
+});
+</script>
 @endpush
 <style>
     /* Align buttons to the right */

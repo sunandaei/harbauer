@@ -32,3 +32,13 @@ Route::get('/result', [ResultController::class, 'index'])->name('Result');
 Route::get('/get-blocks', [ResultController::class, 'getBlocks']);
 Route::get('/get-panchayats', [ResultController::class, 'getPanchayats']);
 
+Route::get('/analyticalSchemeData', [ResultController::class, 'analyticalSchemeData'])->name('analyticalSchemeData');
+
+Route::get('/analyticalDataMonthly', [ResultController::class, 'analyticalDataMonthly'])->name('analyticalDataMonthly');
+
+Route::get('/deviceAnalyticalDataMonthly', [ResultController::class, 'deviceAnalyticalDataMonthly'])->name('deviceAnalyticalDataMonthly');
+
+Route::get('/stateData', [ResultController::class, 'stateData'])->name('stateData');
+
+
+
