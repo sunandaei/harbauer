@@ -31,7 +31,7 @@
             <div class="row">
                 <div class="col-md-2">
                 <select id="district" name="district" class="form-control">
-                    <option value="">Select District</option>
+                    <option value="">All</option>
                     @foreach($districts as $district)
                        <option value="{{ $district->dist_code }}" {{ $request->district == $district->dist_code ? 'selected' : '' }}>{{ $district->dist_name }}</option>
                  

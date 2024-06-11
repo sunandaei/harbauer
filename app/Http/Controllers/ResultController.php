@@ -6,6 +6,7 @@ use App\Models\DistMaster;
 use App\Models\BlockMaster;
 use App\Models\PanMaster;
 use App\Models\SchemeMaster;
+use App\Models\WardMaster;
 
 
 class ResultController extends Controller
@@ -17,6 +18,12 @@ class ResultController extends Controller
 
     public function stateData(Request $request)
     {
+    $wardCount = WardMaster::count();
+    $schemeCount = SchemeMaster::count();
+    $averageMotorRunningHours = Result::avg('motor_running_hrs');
+    $averageElecHRS = Result::avg('HRS');
+    
+
     $districts = DistMaster::orderBy('dist_name')->get();
     $data = Result::query();
     if ($request->filled('district')) 
@@ -39,16 +46,16 @@ class ResultController extends Controller
 
     // Sample data
     $data = [
-        'totalScheme' => 4774,
+        'totalScheme' => $schemeCount,
         'functionalScheme' => 91.83,
         'nonFunctionalScheme' => 8.17,
-        'avgRunningHours' => 0.01,
-        'avgElectricHours' => 0.01,
+        'avgRunningHours' => $averageMotorRunningHours,
+        'avgElectricHours' => $averageElecHRS,
         'fhtc' => 954800,
         'totalHouseholds' => 64500,
         'coverage' => 100,
         'lpcd' => 0.06,
-        'totalWards' => 64500,
+        'totalWards' => $wardCount,
         'waterConsumption' => 0.07,
         'waterRequirement' => 422737.7,
     ];
