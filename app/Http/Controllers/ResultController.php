@@ -20,8 +20,8 @@ class ResultController extends Controller
     {
     $wardCount = WardMaster::count();
     $schemeCount = SchemeMaster::count();
-    $averageMotorRunningHours = Result::avg('motor_running_hrs');
-    $averageElecHRS = Result::avg('HRS');
+    $averageMotorRunningHours = number_format(Result::avg('motor_running_hrs'), 2);
+    $averageElecHRS = number_format(Result::avg('HRS'), 2);
     
 
     $districts = DistMaster::orderBy('dist_name')->get();
