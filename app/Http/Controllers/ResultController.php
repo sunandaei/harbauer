@@ -10,6 +10,11 @@ use App\Models\SchemeMaster;
 
 class ResultController extends Controller
 {
+    public function __construct()
+    {
+        $this->middleware('auth');
+    }
+
     public function stateData(Request $request)
     {
     $districts = DistMaster::orderBy('dist_name')->get();

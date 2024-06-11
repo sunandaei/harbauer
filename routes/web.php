@@ -19,14 +19,15 @@ use App\Http\Controllers\Auth\LoginController;
 |
 */
 
-
+Auth::routes();
+Route::post('/logout', 'App\Http\Controllers\Auth\LoginController@logout')->name('logout');
 
 
 Route::get('/', function () {
     return redirect()->route('login');
 });
 
-Route::get('/home', [HomeController::class, 'index'])->name('home');
+//Route::get('/home', [HomeController::class, 'index'])->name('home');
 
 Route::get('/result', [ResultController::class, 'index'])->name('Result');
 
@@ -44,6 +45,4 @@ Route::get('/stateData', [ResultController::class, 'stateData'])->name('stateDat
 
 
 
-Auth::routes();
 
-Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');

@@ -93,8 +93,8 @@
             datasets: [{
                 data: [totalFun, totalOff],
                 backgroundColor: [
-                    '#a5a7a8',
-                    '#6c757d'
+                    '#007bff',
+                    '#f33b0f'
                 ],
                 hoverOffset: 4
             }]

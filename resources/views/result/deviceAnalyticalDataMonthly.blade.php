@@ -149,7 +149,7 @@
                 datasets: [{
                     label: 'Device Count',
                     data: deviceValues,
-                    backgroundColor: 'rgba(54, 162, 235, 0.6)',
+                    backgroundColor: '#007bff',
                     borderColor: 'rgba(54, 162, 235, 1)',
                     borderWidth: 1
                 }]

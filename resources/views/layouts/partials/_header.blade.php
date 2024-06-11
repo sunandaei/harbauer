@@ -7,11 +7,31 @@
   <!-- Navbar -->
   <nav class="main-header navbar navbar-expand navbar-white navbar-light">
     
-    <!-- Left navbar links -->
-    @include('layouts.partials._top_bar_left')
-    <!-- Right navbar links -->
-    @include('layouts.partials._top_bar_right')
-    
+   <ul class="navbar-nav">
+      <li class="nav-item">
+        <a class="nav-link" data-widget="pushmenu" href="#" role="button"><i class="fas fa-bars"></i></a>
+      </li>
+      <li class="nav-item d-none d-sm-inline-block">
+        <a href="{{route('stateData')}}" class="nav-link">Home</a>
+      </li>
+      <li class="nav-item d-none d-sm-inline-block"style="margin-top: 8px;">
+       @if (Auth::check())
+           
+            <a href="{{ route('logout') }}"
+               onclick="event.preventDefault();
+                        document.getElementById('logout-form').submit();">
+                Logout
+            </a>
+
+            <form id="logout-form" action="{{ route('logout') }}" method="POST" style="display: none;">
+                @csrf
+            </form>
+        @else
+           
+        @endif
+      </li>
+     
+    </ul>
     
   </nav>
   <!-- /.navbar -->
