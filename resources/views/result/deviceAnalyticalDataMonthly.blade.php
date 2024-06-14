@@ -34,6 +34,7 @@
                     <div class="col-md-12">
                        <select id="district" name="district" class="form-control">
                           <option value="">Select District</option>
+                           <option value="">ALL</option>
                           @foreach($districts as $district)
                           <option value="{{ $district->dist_code }}" {{ $request->district == $district->dist_code ? 'selected' : '' }}>{{ $district->dist_name }}</option>
                           @endforeach
@@ -80,6 +81,10 @@
                     <tr>
                        <td>Functional</td>
                        <td>{{$totalFun}}</td>
+                    </tr>
+                     <tr>
+                       <td>Non Functional</td>
+                       <td>{{$totalNonFun}}</td>
                     </tr>
                     <tr>
                        <td>Offline</td>
@@ -133,11 +138,12 @@
 <script>
     $(document).ready(function() {
         // Prepare data for the chart
-        var deviceNames = ['Target Installed Device', 'Installed IOT Devices', 'Functional', 'Offline'];
+        var deviceNames = ['Target Installed Device', 'Installed IOT Devices', 'Functional', 'Non Functional', 'Offline'];
         var deviceValues = [
             {{ $barChartData['targetInstalledDevices'] }},
             {{ $barChartData['installedIOTDevices'] }},
             {{ $barChartData['functional'] }},
+            {{ $barChartData['nonFunctional'] }},
             {{ $barChartData['offline'] }}
         ];
 

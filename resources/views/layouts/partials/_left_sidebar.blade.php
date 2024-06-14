@@ -14,6 +14,22 @@
         </div>
         <div class="info">
           <a href="{{route('stateData')}}" class="d-block">Harbauer India</a>
+
+          @if (Auth::check())
+           
+            <a href="{{ route('logout') }}"
+               onclick="event.preventDefault();
+                        document.getElementById('logout-form').submit();">
+                Logout
+            </a>
+
+            <form id="logout-form" action="{{ route('logout') }}" method="POST" style="display: none;">
+                @csrf
+            </form>
+        @else
+           
+        @endif
+      
         </div>
       </div>
 

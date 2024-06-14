@@ -19,7 +19,7 @@
 @endsection
 @section('content')
 <div class="row">
-    <!-- Info Boxes -->
+    <!-- Info Boxes 
     <div class="col-md-3 col-sm-6 col-12">
         <div class="info-box shadow-sm">
             <span class="info-box-icon bg-info"><i class="fas fa-water"></i></span>
@@ -28,7 +28,7 @@
                 <span class="info-box-number">{{ $data['totalScheme'] }}</span>
             </div>
         </div>
-    </div>
+    </div>-->
 
     <div class="col-md-3 col-sm-6 col-12">
         <div class="info-box shadow-sm">
@@ -64,8 +64,8 @@
         <div class="info-box shadow-sm">
             <span class="info-box-icon bg-primary"><i class="fas fa-bolt"></i></span>
             <div class="info-box-content">
-                <span class="info-box-text">Average Electric Hours</span>
-                <span class="info-box-number">{{ $data['avgElectricHours'] }}</span>
+                <span class="info-box-text">Average Electricity </span>
+                <span class="info-box-number">Available  </span>
             </div>
         </div>
     </div>

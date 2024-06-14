@@ -83,23 +83,27 @@ class ResultController extends Controller
     $functional    = clone $data;
     $offline       = clone $data;
     $insIOTDevice  = clone $data;
+    $nonFunctional = clone $data;
    
 
     $totalTested = $all->count();
     $totalFun = $functional->whereIn('status',["FUNCTIONAL"])->count();
+    $totalNonFun = $functional->whereIn('status',["NON FUNCTIONAL"])->count();    
+   
     $totalOff = $offline->whereIn('status',["OFFLINE"])->count();
     
     $totalInsIOTDevice = $insIOTDevice->distinct('deviceid')
             ->count('deviceid');
 
     $barChartData = [
-        'targetInstalledDevices' => $totalTarInsDevice,
-        'installedIOTDevices' => $totalInsIOTDevice,
-        'functional' => $totalFun,
-        'offline' => $totalOff
+       'targetInstalledDevices' => $totalTarInsDevice,
+       'installedIOTDevices' => $totalInsIOTDevice,
+       'functional' => $totalFun,
+       'nonFunctional' => $totalNonFun,
+       'offline' => $totalOff
     ];        
     // Return the data to the view
-    return view('result.deviceAnalyticalDataMonthly', compact('data', 'districts', 'request','totalTested','totalFun','totalOff','totalTarInsDevice','totalInsIOTDevice','barChartData'));
+    return view('result.deviceAnalyticalDataMonthly', compact('data', 'districts', 'request','totalTested','totalFun','totalNonFun','totalOff','totalTarInsDevice','totalInsIOTDevice','barChartData'));
     }
 
 
@@ -136,13 +140,17 @@ class ResultController extends Controller
        $all         = clone $data;
        $functional  = clone $data;
        $offline     = clone $data;
+       $nonFun      = clone $data;
 
        $totalTested = $all->count();
        $totalFun = $functional->whereIn('status',["FUNCTIONAL"])->count();
        $totalOff = $offline->whereIn('status',["OFFLINE"])->count();
 
+       $totalNonFun = $offline->whereIn('status',["NON FUNCTIONAL"])->count();
+       //$totalNonFun = 200;
+
        $districts = DistMaster::all();
-       return view('result.analyticalSchemeData', compact('data','districts','request','totalTested','totalFun','totalOff'));
+       return view('result.analyticalSchemeData', compact('data','districts','request','totalTested','totalFun','totalOff','totalNonFun'));
     }
 
 

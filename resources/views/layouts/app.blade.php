@@ -39,8 +39,10 @@
         <!-- Include Header -->
         @include('layouts.partials._header')
 
+
         <!-- Include Left Sidebar -->
         @include('layouts.partials._left_sidebar')
+        
 
         <!-- Content Wrapper -->
         <div class="content-wrapper">

@@ -5,7 +5,7 @@
    <div class="container-fluid">
       <div class="row mb-2">
         <div class="col-sm-6">
-            <h5 style="display: inline-block;">{{ $request->district ? $districts->where('dist_code', $request->district)->first()->dist_name : 'State' }} : FUNCTIONAL & OFFLINE SCHEMES</h5>
+            <h5 style="display: inline-block;">{{ $request->district ? $districts->where('dist_code', $request->district)->first()->dist_name : 'State' }} : FUNCTIONAL, NON FUNCTIONAL & OFFLINE SCHEMES</h5>
         </div>
          <div class="col-sm-6">
             <ol class="breadcrumb float-sm-right">
@@ -31,6 +31,7 @@
                     <div class="col-md-12">
                        <select id="district" name="district" class="form-control">
                           <option value="">Select District</option>
+                          <option value="">ALL</option>
                           @foreach($districts as $district)
                           <option value="{{ $district->dist_code }}" {{ $request->district == $district->dist_code ? 'selected' : '' }}>{{ $district->dist_name }}</option>
                           @endforeach
@@ -57,6 +58,7 @@
                  <div class="col-md-12">
                     <p><strong>Distname:</strong> {{ $request->district ? $districts->where('dist_code', $request->district)->first()->dist_name : 'State' }}</p>
                     <p><strong>Functional:</strong> {{ $totalFun }}</p>
+                    <p><strong>Non Functional:</strong> {{ $totalNonFun }}</p>
                     <p><strong>Offline:</strong> {{ $totalOff }}</p>
                  </div>
               </div>
@@ -86,15 +88,17 @@
         // Get functional and offline counts
         var totalFun = {{ $totalFun }};
         var totalOff = {{ $totalOff }};
+        var totalNonFun = {{ $totalNonFun }};
 
         // Donut Chart data
         var donutData = {
-            labels: ['Functional', 'Offline'],
+            labels: ['Functional','Non Functional', 'Offline'],
             datasets: [{
-                data: [totalFun, totalOff],
+                data: [totalFun, totalNonFun, totalOff],
                 backgroundColor: [
                     '#007bff',
-                    '#f33b0f'
+                    '#f33b0f',
+                    '#ffc107',
                 ],
                 hoverOffset: 4
             }]
