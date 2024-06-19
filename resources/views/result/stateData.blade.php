@@ -153,18 +153,95 @@
 @endsection
 
 @push('scripts')
-<script src="https://maps.googleapis.com/maps/api/js?key=YOUR_API_KEY"></script>
-<script>
+<script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyDg8Fs15AVqgvQpljyPyLaWTrFXd9AbMIU"></script>
+ <script>
     function initMap() {
-        var mapOptions = {
-            center: { lat: 20.5937, lng: 78.9629 }, // Coordinates for India
-            zoom: 5
-        };
-        var map = new google.maps.Map(document.getElementById('map'), mapOptions);
+      const map = new google.maps.Map(document.getElementById("map"), {
+        zoom: 8,
+        center: { lat: 25.4183, lng: 86.1294 }, // Centered at Patna
+        styles: [
+          {
+            featureType: 'administrative',
+            elementType: 'geometry',
+            stylers: [{ visibility: 'off' }]
+          },
+          {
+            featureType: 'administrative.country',
+            elementType: 'geometry',
+            stylers: [{ visibility: 'on' }]
+          },
+          {
+            featureType: 'administrative.province',
+            elementType: 'geometry',
+            stylers: [{ visibility: 'on' }]
+          },
+          {
+            featureType: 'administrative.locality',
+            elementType: 'geometry',
+            stylers: [{ visibility: 'on' }]
+          },
+          {
+            featureType: 'road',
+            elementType: 'geometry',
+            stylers: [{ visibility: 'off' }]
+          },
+          {
+            featureType: 'poi',
+            elementType: 'geometry',
+            stylers: [{ visibility: 'off' }]
+          },
+          {
+            featureType: 'water',
+            elementType: 'geometry',
+            stylers: [{ visibility: 'simplified' }]
+          },
+          {
+            featureType: 'landscape',
+            elementType: 'geometry',
+            stylers: [{ visibility: 'simplified' }]
+          },
+        ]
+      });
+
+      const biharCoords = [];
+
+      const biharBoundary = new google.maps.Polygon({
+        paths: biharCoords,
+        strokeColor: "#FF0000",
+        strokeOpacity: 0.8,
+        strokeWeight: 2,
+        fillColor: "#FF0000",
+        fillOpacity: 0.35,
+      });
+
+      biharBoundary.setMap(map);
+
+      const markers = [
+        { position: { lat: 25.2445, lng: 86.9710 }, title: "Bhagalpur" },
+        { position: { lat: 25.5613, lng: 84.6897 }, title: "Bhojpur" },
+        { position: { lat: 24.7914, lng: 85.0002 }, title: "Gaya" },
+        { position: { lat: 25.1357, lng: 85.4438 }, title: "Nalanda" },
+        { position: { lat: 24.8867, lng: 85.5360 }, title: "Nawada" },
+        { position: { lat: 24.9481, lng: 84.0108 }, title: "Rohtas" }
+      ];
+
+      const icon = {
+        url: "https://harbauer.sunandainternational.org/public/adminlte/dist/img/logoHar.jpeg", // URL to your custom icon
+        scaledSize: new google.maps.Size(32, 32), // Scaled size of the icon
+      };
+
+      markers.forEach((markerData) => {
+        new google.maps.Marker({
+          position: markerData.position,
+          map,
+          title: markerData.title,
+          icon: icon
+        });
+      });
     }
 
-    google.maps.event.addDomListener(window, 'load', initMap);
-</script>
+    google.maps.event.addDomListener(window, "load", initMap);
+  </script>
 @endpush
 
 <style>
