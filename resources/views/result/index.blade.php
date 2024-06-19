@@ -59,8 +59,21 @@
                </div>
                 <div class="col-md-2">
                     <select id="scheme_type" name="scheme_type" class="form-control">
+ 
+
                         <option value="">Select scheme type</option>
-                        <option value="PWS" {{ $request->scheme_type == 'PWS' ? 'selected' : '' }}>PWS</option>
+                       <option value="MINI" {{ $request->scheme_type == 'MINI' ? 'selected' : '' }}>MINI</option>
+
+                         <option value="MVS" {{ $request->scheme_type == 'MVS' ? 'selected' : '' }}>MVS</option>
+                        <option value="PWS" {{ $request->scheme_type == 'PWS' ? 'selected' : '' }}>PWS</option> 
+
+                        <option value="PWS(E)" {{ $request->scheme_type == 'PWS(E)' ? 'selected' : '' }}>PWS(E)</option>
+
+                        <option value="PWSS" {{ $request->scheme_type == 'PWSS' ? 'selected' : '' }}>PWSS</option>
+
+                        <option value="RWSS" {{ $request->scheme_type == 'RWSS' ? 'selected' : '' }}>RWSS</option>
+
+                        
                         <option value="WLS" {{ $request->scheme_type == 'WLS' ? 'selected' : '' }}>WLS</option>
                     
                     </select>
