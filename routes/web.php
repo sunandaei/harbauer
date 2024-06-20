@@ -23,6 +23,8 @@ Auth::routes();
 Route::post('/logout', 'App\Http\Controllers\Auth\LoginController@logout')->name('logout');
 
 
+
+
 Route::get('/', function () {
     return redirect()->route('login');
 });

@@ -22,6 +22,32 @@ class ResultController extends Controller
     $schemeCount = SchemeMaster::count();
     $averageMotorRunningHours = number_format(Result::avg('motor_running_hrs'), 2);
     $averageElecHRS = number_format(Result::avg('HRS'), 2);
+    //
+    // Retrieve all districts from the distMaster collection
+    $districts = DistMaster::all();
+
+    $statistics = [];
+
+    foreach ($districts as $district) 
+    {
+        $distCode = $district->dist_code;
+        $distName = ucfirst($district->dist_name);
+
+        $statistics[$distName] = [
+        'total_schemes' => Result::where('dist_code', $distCode)->groupBy('scheme_id')->count(),
+        
+        'functional_schemes' => Result::where('dist_code', $distCode)->where('status', 'FUNCTIONAL')->count(),
+        
+        'non_functional_schemes' => Result::where('dist_code', $distCode)->where('status', 'NON-FUNCTIONAL')->count(),
+        
+        'offline_schemes' => Result::where('dist_code', $distCode)->where('status', 'OFFLINE')->count(),
+        
+        'avg_motor_running_hours' => Result::where('dist_code', $distCode)->avg('motor_running_hrs')
+        ];
+    }
+
+
+
     
 
     $districts = DistMaster::orderBy('dist_name')->get();
@@ -60,7 +86,7 @@ class ResultController extends Controller
         'waterRequirement' => 422737.7,
     ];
 
-    return view('result.stateData', compact('data'));  
+    return view('result.stateData', compact('data','statistics'));  
     }
 
     public function deviceAnalyticalDataMonthly(Request $request)

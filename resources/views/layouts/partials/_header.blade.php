@@ -12,7 +12,7 @@
       <li class="nav-item d-none d-sm-inline-block">
         <a href="{{route('stateData')}}" class="nav-link">
             <img class="animation__shake" src="{{asset('adminlte/dist/img/AdminLTELogo.png')}}" alt="AdminLTELogo" height="60" width="60">
-            <p style="color: #007bffe6;font-weight: bold;font-size: 15px;">HARBAUER (INDIA) PRIVATE LIMITED 
+            <p style="color: #0299b8;font-weight: bold;font-size: 15px;">HARBAUER (INDIA) PRIVATE LIMITED 
             </p>
 
         </a>
@@ -27,8 +27,8 @@
  
       <li class="nav-item">
         <div style="float:right">
-            <img class="animation__shake" src="{{asset('adminlte/dist/img/logoHar.jpeg')}}" alt="AdminLTELogo" height="60" width="60" style="    margin-left: 75%;"/>
-            <p style="color: #007bffe6;font-weight: bold;font-size: 15px;">PUBLIC HEALTH ENGINEERING DEPARTMENT, GOVT. OF BIHAR 
+            <img class="animation__shake" src="{{asset('adminlte/dist/img/logoHar.jpeg')}}" alt="AdminLTELogo" height="70" width="70" style="    margin-left: 75%;"/>
+            <p style="color: #0299b8;font-weight: bold;font-size: 15px;">PUBLIC HEALTH ENGINEERING DEPARTMENT, GOVT. OF BIHAR 
 
         </p>
         

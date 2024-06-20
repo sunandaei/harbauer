@@ -19,17 +19,6 @@
 @endsection
 @section('content')
 <div class="row">
-    <!-- Info Boxes 
-    <div class="col-md-3 col-sm-6 col-12">
-        <div class="info-box shadow-sm">
-            <span class="info-box-icon bg-info"><i class="fas fa-water"></i></span>
-            <div class="info-box-content">
-                <span class="info-box-text">Total Scheme</span>
-                <span class="info-box-number">{{ $data['totalScheme'] }}</span>
-            </div>
-        </div>
-    </div>-->
-
     <div class="col-md-3 col-sm-6 col-12">
         <div class="info-box shadow-sm">
             <span class="info-box-icon bg-success"><i class="fas fa-check-circle"></i></span>
@@ -39,7 +28,6 @@
             </div>
         </div>
     </div>
-
     <div class="col-md-3 col-sm-6 col-12">
         <div class="info-box shadow-sm">
             <span class="info-box-icon bg-danger"><i class="fas fa-times-circle"></i></span>
@@ -49,7 +37,6 @@
             </div>
         </div>
     </div>
-
     <div class="col-md-3 col-sm-6 col-12">
         <div class="info-box shadow-sm">
             <span class="info-box-icon bg-warning"><i class="fas fa-clock"></i></span>
@@ -59,7 +46,6 @@
             </div>
         </div>
     </div>
-
     <div class="col-md-3 col-sm-6 col-12">
         <div class="info-box shadow-sm">
             <span class="info-box-icon bg-primary"><i class="fas fa-bolt"></i></span>
@@ -69,7 +55,6 @@
             </div>
         </div>
     </div>
-
     <div class="col-md-3 col-sm-6 col-12">
         <div class="info-box shadow-sm">
             <span class="info-box-icon bg-info"><i class="fas fa-tint"></i></span>
@@ -79,7 +64,6 @@
             </div>
         </div>
     </div>
-
     <div class="col-md-3 col-sm-6 col-12">
         <div class="info-box shadow-sm">
             <span class="info-box-icon bg-success"><i class="fas fa-home"></i></span>
@@ -89,7 +73,6 @@
             </div>
         </div>
     </div>
-
     <div class="col-md-3 col-sm-6 col-12">
         <div class="info-box shadow-sm">
             <span class="info-box-icon bg-warning"><i class="fas fa-percentage"></i></span>
@@ -99,7 +82,6 @@
             </div>
         </div>
     </div>
-
     <div class="col-md-3 col-sm-6 col-12">
         <div class="info-box shadow-sm">
             <span class="info-box-icon bg-info"><i class="fas fa-tint"></i></span>
@@ -109,7 +91,6 @@
             </div>
         </div>
     </div>
-
     <div class="col-md-3 col-sm-6 col-12">
         <div class="info-box shadow-sm">
             <span class="info-box-icon bg-primary"><i class="fas fa-flag"></i></span>
@@ -119,7 +100,6 @@
             </div>
         </div>
     </div>
-
     <div class="col-md-3 col-sm-6 col-12">
         <div class="info-box shadow-sm">
             <span class="info-box-icon bg-success"><i class="fas fa-tint-slash"></i></span>
@@ -129,7 +109,6 @@
             </div>
         </div>
     </div>
-
     <div class="col-md-3 col-sm-6 col-12">
         <div class="info-box shadow-sm">
             <span class="info-box-icon bg-danger"><i class="fas fa-tint"></i></span>
@@ -154,94 +133,77 @@
 
 @push('scripts')
 <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyDg8Fs15AVqgvQpljyPyLaWTrFXd9AbMIU"></script>
- <script>
+<script>
     function initMap() {
-      const map = new google.maps.Map(document.getElementById("map"), {
-        zoom: 8,
-        center: { lat: 25.4183, lng: 86.1294 }, // Centered at Patna
-        styles: [
-          {
-            featureType: 'administrative',
-            elementType: 'geometry',
-            stylers: [{ visibility: 'off' }]
-          },
-          {
-            featureType: 'administrative.country',
-            elementType: 'geometry',
-            stylers: [{ visibility: 'on' }]
-          },
-          {
-            featureType: 'administrative.province',
-            elementType: 'geometry',
-            stylers: [{ visibility: 'on' }]
-          },
-          {
-            featureType: 'administrative.locality',
-            elementType: 'geometry',
-            stylers: [{ visibility: 'on' }]
-          },
-          {
-            featureType: 'road',
-            elementType: 'geometry',
-            stylers: [{ visibility: 'off' }]
-          },
-          {
-            featureType: 'poi',
-            elementType: 'geometry',
-            stylers: [{ visibility: 'off' }]
-          },
-          {
-            featureType: 'water',
-            elementType: 'geometry',
-            stylers: [{ visibility: 'simplified' }]
-          },
-          {
-            featureType: 'landscape',
-            elementType: 'geometry',
-            stylers: [{ visibility: 'simplified' }]
-          },
-        ]
-      });
-
-      const biharCoords = [];
-
-      const biharBoundary = new google.maps.Polygon({
-        paths: biharCoords,
-        strokeColor: "#FF0000",
-        strokeOpacity: 0.8,
-        strokeWeight: 2,
-        fillColor: "#FF0000",
-        fillOpacity: 0.35,
-      });
-
-      biharBoundary.setMap(map);
-
-      const markers = [
-        { position: { lat: 25.2445, lng: 86.9710 }, title: "Bhagalpur" },
-        { position: { lat: 25.5613, lng: 84.6897 }, title: "Bhojpur" },
-        { position: { lat: 24.7914, lng: 85.0002 }, title: "Gaya" },
-        { position: { lat: 25.1357, lng: 85.4438 }, title: "Nalanda" },
-        { position: { lat: 24.8867, lng: 85.5360 }, title: "Nawada" },
-        { position: { lat: 24.9481, lng: 84.0108 }, title: "Rohtas" }
-      ];
-
-      const icon = {
-        url: "https://harbauer.sunandainternational.org/public/adminlte/dist/img/logoHar.jpeg", // URL to your custom icon
-        scaledSize: new google.maps.Size(32, 32), // Scaled size of the icon
-      };
-
-      markers.forEach((markerData) => {
-        new google.maps.Marker({
-          position: markerData.position,
-          map,
-          title: markerData.title,
-          icon: icon
+        const map = new google.maps.Map(document.getElementById("map"), {
+            zoom: 8,
+            center: { lat: 25.4183, lng: 86.1294 }, // Centered at Patna
+            styles: [
+                { featureType: 'administrative', elementType: 'geometry', stylers: [{ visibility: 'off' }] },
+                { featureType: 'administrative.country', elementType: 'geometry', stylers: [{ visibility: 'on' }] },
+                { featureType: 'administrative.province', elementType: 'geometry', stylers: [{ visibility: 'on' }] },
+                { featureType: 'administrative.locality', elementType: 'geometry', stylers: [{ visibility: 'on' }] },
+                { featureType: 'road', elementType: 'geometry', stylers: [{ visibility: 'off' }] },
+                { featureType: 'poi', elementType: 'geometry', stylers: [{ visibility: 'off' }] },
+                { featureType: 'water', elementType: 'geometry', stylers: [{ visibility: 'simplified' }] },
+                { featureType: 'landscape', elementType: 'geometry', stylers: [{ visibility: 'simplified' }] },
+            ]
         });
-      });
+
+        const statistics = @json($statistics);
+
+        const markers = [
+            { position: { lat: 25.2445, lng: 86.9710 }, title: "BHAGALPUR" },
+            { position: { lat: 25.5613, lng: 84.6897 }, title: "BHOJPUR" },
+            { position: { lat: 24.7914, lng: 85.0002 }, title: "GAYA" },
+            { position: { lat: 25.1357, lng: 85.4438 }, title: "NALANDA" },
+            { position: { lat: 24.8867, lng: 85.5360 }, title: "NAWADA" },
+            { position: { lat: 24.9481, lng: 84.0108 }, title: "ROHTAS" }
+        ];
+
+        const icon = {
+            url: "https://harbauer.sunandainternational.org/public/adminlte/dist/img/map.jpeg", // URL to your custom icon
+            scaledSize: new google.maps.Size(32, 32), // Scaled size of the icon
+        };
+
+        markers.forEach((markerData) => {
+            const distStats = statistics[markerData.title] || {
+                total_schemes: 'N/A',
+                functional_schemes: 'N/A',
+                non_functional_schemes: 'N/A',
+                offline_schemes: 'N/A',
+                avg_motor_running_hours: 'N/A'
+            };
+            const infoContent = `
+                <div style="width:200px;">
+                    <h4>${markerData.title}</h4>
+                    <p>No. of Scheme: ${distStats.total_schemes}</p>
+                    <p>Functional: ${distStats.functional_schemes}</p>
+                    <p>Non-Functional: ${distStats.non_functional_schemes}</p>
+                    <p>Offline: ${distStats.offline_schemes}</p>
+                    <p>Average Motor running hours: ${distStats.avg_motor_running_hours}</p>
+                </div>
+            `;
+
+            const marker = new google.maps.Marker({
+                position: markerData.position,
+                map,
+                title: markerData.title,
+                icon: icon
+            });
+
+            const infoWindow = new google.maps.InfoWindow({
+                content: infoContent
+            });
+
+            marker.addListener("click", () => {
+                infoWindow.open(map, marker);
+            });
+        });
     }
 
     google.maps.event.addDomListener(window, "load", initMap);
-  </script>
+</script>
 @endpush
 
 <style>

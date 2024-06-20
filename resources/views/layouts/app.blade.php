@@ -125,6 +125,17 @@
 </script>
 <script>
   $(function () {
+    
+    $("#exampleClient").DataTable({
+      "responsive": false, 
+      "lengthChange": true, 
+      "scrollCollapse": true,
+      "autoWidth": true,
+      "scrollX": true, 
+      "buttons": ["pdf"]
+    }).buttons().container().appendTo('#example1_wrapper .col-md-6:eq(0)');
+
+
     $("#example1").DataTable({
       "responsive": false, 
       "lengthChange": true, 
