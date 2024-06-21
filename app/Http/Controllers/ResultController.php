@@ -42,7 +42,7 @@ class ResultController extends Controller
         
         'offline_schemes' => Result::where('dist_code', $distCode)->where('status', 'OFFLINE')->count(),
         
-        'avg_motor_running_hours' => Result::where('dist_code', $distCode)->avg('motor_running_hrs')
+        'avg_motor_running_hours' =>number_format(Result::where('dist_code', $distCode)->avg('motor_running_hrs'),2)
         ];
     }
 
@@ -73,8 +73,8 @@ class ResultController extends Controller
     // Sample data
     $data = [
         'totalScheme' => $schemeCount,
-        'functionalScheme' => 91.83,
-        'nonFunctionalScheme' => 8.17,
+        'functionalScheme' => number_format(($totalFun/5347)*100,2),
+        'nonFunctionalScheme' => 0,
         'avgRunningHours' => $averageMotorRunningHours,
         'avgElectricHours' => $averageElecHRS,
         'fhtc' => 954800,
