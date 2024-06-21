@@ -132,7 +132,7 @@
       "scrollCollapse": true,
       "autoWidth": true,
       "scrollX": true, 
-      "buttons": ["pdf"]
+      "buttons": ["excel"]
     }).buttons().container().appendTo('#example1_wrapper .col-md-6:eq(0)');
 
 
@@ -142,7 +142,7 @@
       "scrollCollapse": true,
       "autoWidth": true,
       "scrollX": true, 
-      "buttons": ["copy", "csv", "excel", "pdf", "print", "colvis"]
+      "buttons": ["copy", "csv", "excel", "print", "colvis"]
     }).buttons().container().appendTo('#example1_wrapper .col-md-6:eq(0)');
     $('#example2').DataTable({
       "paging": true,
