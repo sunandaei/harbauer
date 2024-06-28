@@ -71,9 +71,9 @@
             <h3 class="card-title">DISTRICT-WISE AVERAGE MOTOR RUNNING (HOURS) </h3>
          </div>
          <!-- /.card-header -->
-         <div class="card-body">
+         <div class="card-body" style="padding:10px">
             <!-- /bar chart dist wise -->
-            <canvas id="barChart" style="height: 400px; width: 100%;"></canvas>
+            <canvas id="barChart" style="height: 300px; width: 80%;"></canvas>
          </div>
          <!-- /.card-body -->
         </div>   
@@ -134,11 +134,22 @@
                     },
                     datalabels: {
                         anchor: 'end',
-                        align: 'end',
+                        align: 'start',
                         formatter: function(value) {
-                            return value.toFixed(2);
+                            return value !== 0 ? value.toFixed(2) : ''; // hide label if value is 0
                         },
-                        color: 'black'
+                        color: function(context) {
+                            var index = context.dataIndex;
+                            var value = context.dataset.data[index];
+                            return value >= context.chart.scales.x.end / 2 ? 'white' : 'black'; // adjust this condition as needed
+                        },
+                        font: function(context) {
+                            var index = context.dataIndex;
+                            var value = context.dataset.data[index];
+                            return {
+                                weight: value >= context.chart.scales.x.end / 2 ? 'bold' : 'normal'
+                            };
+                        }
                     }
                 }
             },
@@ -146,6 +157,7 @@
         });
     });
 </script>
+
 @endpush
 
 <style>
