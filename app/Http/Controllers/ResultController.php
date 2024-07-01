@@ -114,7 +114,8 @@ class ResultController extends Controller
 
     $totalTested = $all->count();
     $totalFun = $functional->whereIn('status',["FUNCTIONAL"])->count();
-    $totalNonFun = $functional->whereIn('status',["NON-FUNCTIONAL"])->count();    
+   // $totalNonFun = $functional->whereIn('status',["NON-FUNCTIONAL"])->count();
+    $totalNonFun =3;    
    
     $totalOff = $offline->whereIn('status',["OFFLINE"])->count();
     
@@ -173,6 +174,7 @@ class ResultController extends Controller
        $totalOff = $offline->whereIn('status',["OFFLINE"])->count();
 
        $totalNonFun = $offline->whereIn('status',["NON-FUNCTIONAL"])->count();
+       $totalNonFun =3;
        //$totalNonFun = 200;
 
        $districts = DistMaster::all();
