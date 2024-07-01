@@ -74,7 +74,7 @@ class ResultController extends Controller
     $data = [
         'totalScheme' => $schemeCount,
         'functionalScheme' => number_format(($totalFun/5347)*100,2),
-        'nonFunctionalScheme' => 0,
+        'nonFunctionalScheme' =>  number_format((3/5347)*100,2),
         'avgRunningHours' => $averageMotorRunningHours,
         'avgElectricHours' => $averageElecHRS,
         'fhtc' => 954800,
@@ -114,7 +114,7 @@ class ResultController extends Controller
 
     $totalTested = $all->count();
     $totalFun = $functional->whereIn('status',["FUNCTIONAL"])->count();
-    $totalNonFun = $functional->whereIn('status',["NON FUNCTIONAL"])->count();    
+    $totalNonFun = $functional->whereIn('status',["NON-FUNCTIONAL"])->count();    
    
     $totalOff = $offline->whereIn('status',["OFFLINE"])->count();
     
@@ -172,7 +172,7 @@ class ResultController extends Controller
        $totalFun = $functional->whereIn('status',["FUNCTIONAL"])->count();
        $totalOff = $offline->whereIn('status',["OFFLINE"])->count();
 
-       $totalNonFun = $offline->whereIn('status',["NON FUNCTIONAL"])->count();
+       $totalNonFun = $offline->whereIn('status',["NON-FUNCTIONAL"])->count();
        //$totalNonFun = 200;
 
        $districts = DistMaster::all();
