@@ -115,7 +115,7 @@ class ResultController extends Controller
     $totalTested = $all->count();
     $totalFun = $functional->whereIn('status',["FUNCTIONAL"])->count();
    // $totalNonFun = $functional->whereIn('status',["NON-FUNCTIONAL"])->count();
-    $totalNonFun =3;    
+    $totalNonFun  = $nonFunctional->whereIn('status',["NON-FUNCTIONAL"])->count();   
    
     $totalOff = $offline->whereIn('status',["OFFLINE"])->count();
     
