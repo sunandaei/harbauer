@@ -38,7 +38,7 @@ class ResultController extends Controller
         
         'functional_schemes' => Result::where('dist_code', $distCode)->where('status', 'FUNCTIONAL')->count(),
         
-        'non_functional_schemes' => Result::where('dist_code', $distCode)->where('status', 'NON-FUNCTIONAL')->count(),
+        'non_functional_schemes' => Result::where('dist_code', $distCode)->where('status', 'NON FUNCTIONAL')->count(),
         
         'offline_schemes' => Result::where('dist_code', $distCode)->where('status', 'OFFLINE')->count(),
         
@@ -115,7 +115,7 @@ class ResultController extends Controller
     $totalTested = $all->count();
     $totalFun = $functional->whereIn('status',["FUNCTIONAL"])->count();
    // $totalNonFun = $functional->whereIn('status',["NON-FUNCTIONAL"])->count();
-    $totalNonFun  = $nonFunctional->whereIn('status',["NON-FUNCTIONAL"])->count();   
+    $totalNonFun  = $nonFunctional->whereIn('status',["NON FUNCTIONAL"])->count();   
    
     $totalOff = $offline->whereIn('status',["OFFLINE"])->count();
     
@@ -173,7 +173,7 @@ class ResultController extends Controller
        $totalFun = $functional->whereIn('status',["FUNCTIONAL"])->count();
        $totalOff = $offline->whereIn('status',["OFFLINE"])->count();
 
-       $totalNonFun = $nonFun->whereIn('status',["NON-FUNCTIONAL"])->count();
+       $totalNonFun = $nonFun->whereIn('status',["NON FUNCTIONAL"])->count();
       // dd($totalNonFun);
        //$totalNonFun =3;
        //$totalNonFun = 200;
