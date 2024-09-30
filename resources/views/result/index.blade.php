@@ -82,7 +82,7 @@
                     <select id="status" name="status" class="form-control">
                         <option value="">Select status</option>
                         <option value="FUNCTIONAL" {{ $request->status == 'FUNCTIONAL' ? 'selected' : '' }}>FUNCTIONAL</option>
-                        <option value="NON-FUNCTIONAL" {{ $request->status == 'NON-FUNCTIONAL' ? 'selected' : '' }}>NON FUNCTIONAL</option>
+                        <option value="NON FUNCTIONAL" {{ $request->status == 'NON FUNCTIONAL' ? 'selected' : '' }}>NON FUNCTIONAL</option>
                         <option value="OFFLINE" {{ $request->status == 'OFFLINE' ? 'selected' : '' }}>OFFLINE</option>
                     
                     </select>
