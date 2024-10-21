@@ -4,6 +4,7 @@ use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\HomeController;
 use App\Http\Controllers\ResultController;
 use App\Http\Controllers\Auth\LoginController;
+use App\Http\Controllers\ExcelController;
 
 
 
@@ -43,6 +44,10 @@ Route::get('/analyticalDataMonthly', [ResultController::class, 'analyticalDataMo
 Route::get('/deviceAnalyticalDataMonthly', [ResultController::class, 'deviceAnalyticalDataMonthly'])->name('deviceAnalyticalDataMonthly');
 
 Route::get('/stateData', [ResultController::class, 'stateData'])->name('stateData');
+
+
+Route::get('/upload', [ExcelController::class, 'showUploadForm'])->name('uploadForm');
+Route::post('/uploadExcel', [ExcelController::class, 'uploadExcel'])->name('uploadExcel');
 
 
 

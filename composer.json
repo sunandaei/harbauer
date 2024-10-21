@@ -12,6 +12,7 @@
         "laravel/sanctum": "^2.11",
         "laravel/tinker": "^2.5",
         "laravel/ui": "^3.4",
+        "maatwebsite/excel": "^3.1",
         "mongodb/laravel-mongodb": "^3.8",
         "mongodb/mongodb": "^1.9.2",
         "nesbot/carbon": "^2.72",
