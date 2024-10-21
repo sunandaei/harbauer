@@ -33,6 +33,7 @@ class ExcelDataImport implements ToCollection
                 'average_water_discharge_in_KL' =>  (float)$row[15],
             ]);
         }
+        
     }
 }
 

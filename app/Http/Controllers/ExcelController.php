@@ -6,6 +6,7 @@ use Illuminate\Http\Request;
 use Maatwebsite\Excel\Facades\Excel;
 use App\Imports\ExcelDataImport; // Import your import class here
 
+
 class ExcelController extends Controller
 {
     public function __construct()

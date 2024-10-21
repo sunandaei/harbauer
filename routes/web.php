@@ -46,6 +46,7 @@ Route::get('/deviceAnalyticalDataMonthly', [ResultController::class, 'deviceAnal
 Route::get('/stateData', [ResultController::class, 'stateData'])->name('stateData');
 
 
+
 Route::get('/upload', [ExcelController::class, 'showUploadForm'])->name('uploadForm');
 Route::post('/uploadExcel', [ExcelController::class, 'uploadExcel'])->name('uploadExcel');
 
