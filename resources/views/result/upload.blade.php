@@ -61,9 +61,8 @@
           </div>
           <!-- /.col -->
         </div>
-@endsection
-
-@push('scripts')
+@endsection 
+@push('scripts') 
 <script>
 $(document).ready(function() {
 // Store the previous selections
