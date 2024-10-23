@@ -75,7 +75,7 @@
             </a>
             
 
-          </li>
+          </li> 
           @endif
           <li class="nav-item menu-open">
             <a href="#" class="nav-link active">
