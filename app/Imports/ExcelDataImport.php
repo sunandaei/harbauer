@@ -22,7 +22,7 @@ class ExcelDataImport implements ToCollection
                 'pan_code' => (int)$row[4],
                 'pan_name' => $row[5],
                 'ward_code' => (int)$row[6],
-                'ward' => $row[7],
+                'ward' => (string)$row[7],
                 'scheme_name' => $row[8],
                 'scheme_type' => $row[9],
                 'device_code' => (int)$row[10],

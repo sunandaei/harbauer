@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 use Maatwebsite\Excel\Facades\Excel;
 use App\Imports\ExcelDataImport; // Import your import class here
+use App\Models\Result;
 
 
 class ExcelController extends Controller
@@ -22,6 +23,8 @@ class ExcelController extends Controller
         ]);
 
         try {
+
+            Result::truncate();
             // Handle the uploaded file
             Excel::import(new ExcelDataImport, $request->file('excel_file'));
 
