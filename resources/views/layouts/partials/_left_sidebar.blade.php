@@ -64,7 +64,7 @@
             
 
           </li>
-
+          @if (Auth::check() && Auth::user()->email !== 'client@gmail.com')
            <li class="nav-item menu-open">
             <a href="{{ route('uploadForm') }}" class="nav-link active">
               <i class="nav-icon fas fa-tachometer-alt"></i>
@@ -76,7 +76,7 @@
             
 
           </li>
-
+          @endif
           <li class="nav-item menu-open">
             <a href="#" class="nav-link active">
               <i class="nav-icon fas fa-tachometer-alt"></i>

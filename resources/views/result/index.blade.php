@@ -121,12 +121,12 @@
                       <th>Pan Name</th>
                       <th>Ward</th>
                       <th>Scheme Name</th>
-                      <th>Scheme Id</th>
                       <th>Scheme Type</th>
                       <th>Device Id</th>
                       <th>Status</th>
                       <th>Avg Motor Running Hrs</th>
-                      <th>Elec. Avi Staus</th>
+                      <th>Elec. Avi Hrs</th>
+                      <th>Avg water discharge(KL)</th>
                     </tr>
                   </thead>
                   <tbody>
@@ -137,13 +137,13 @@
                        <td>{{ $item->block_name}}</td>
                        <td>{{ $item->pan_name }}</td>
                        <td>{{ $item->ward }}</td>
-                       <td>{{ $item->scheme_name }}</td>
-                       <td>{{ $item->scheme_id }}</td>
+                       <td>{{ $item->scheme_name }}</td>                      
                        <td>{{ $item->scheme_type }}</td>
                        <td>{{ $item->device_id }}</td>
                        <td>{{ $item->status }}</td>
                        <td>{{ $item->motor_running_hrs }}</td>
                        <td>{{ $item->elec_avi }}</td>
+                       <td>{{ $item->average_water_discharge_in_KL}}</td>
                       
                      </tr>
                     @endforeach
